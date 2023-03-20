@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Fira Sans";
+}
+
+html {
+  margin: 0;
+  overflow: hidden;
+  height: auto;
+  width: auto;
+}
+
+.site-container {
+  display: grid;
+  grid-template-areas: "header header header header header header" "main main main main main main" "footer footer footer footer footer footer";
+  grid-template-rows: 15% 80% 5%;
+  gap: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+}
+
+.header {
+  background-color: red;
+  grid-area: header;
+  border: solid 2px #000;
+}
+.header nav {
+  font-size: 2vw;
+  text-align: right;
+}
+.header nav a {
+  color: white;
+  text-decoration: none;
+  background-color: #999;
+  border-radius: 70%;
+  padding: 2vw;
+  line-height: 14.5vh;
+}
+.header nav a .active {
+  background-color: green;
+}
+
+.main {
+  background-color: green;
+  grid-area: main;
+  border: solid 2px #000;
+}
+.main .allatok-container {
+  display: grid;
+  grid-template-areas: "search main main main main main";
+  min-height: 100%;
+}
+.main .allatok-container .allatok-search {
+  grid-area: search;
+  background-color: aquamarine;
+}
+.main .allatok-container .allatok-grid {
+  grid-area: main;
+  background-color: honeydew;
+}
+.main .allatok-container .allatok-grid .allatok {
+  background-color: chartreuse;
+  width: 100%;
+  height: 100%;
+}
+
+.footer {
+  background-color: gray;
+  grid-area: footer;
+  border: solid 2px #000;
+}
+
+
+
+/*# sourceMappingURL=style.css.map */

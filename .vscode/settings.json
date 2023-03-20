@@ -1,0 +1,8 @@
+{
+    "scss.format.maxPreserveNewLines": null,
+    "scss.lint.boxModel": "warning",
+    "scss.lint.duplicateProperties": "warning",
+    "scss.lint.idSelector": "warning",
+    "scss.format.braceStyle": "collapse",
+    "scss.format.enable": true
+}
