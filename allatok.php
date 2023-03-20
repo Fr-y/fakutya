@@ -29,20 +29,22 @@
 
                 </div>
                 <div class="allatok-grid">
-                    <?php
-                    $generated = '';
-                    $generated .= "<table class=\"allatok\" border='1'>";
-                        for ($x = 1; $x <= 10; $x++) {
-                            $generated .= "<td> $x </td>";
-                            if  ($x % 2 == 0) {
-                                $generated .= "</tr>";
-                            } elseif ( $x == 0) {
+                    <div class="wrapper">
+                        <?php
+                        $generated = '';
+                        $generated .= "<table class=\"allatok\" border='1'>";
+                            for ($x = 1; $x <= 50; $x++) {
+                                $generated .= "<td> $x </td>";
+                                if  ($x % 2 == 0) {
+                                    $generated .= "</tr>";
+                                } elseif ( $x == 0) {
 
+                                }
                             }
-                        }
-                    $generated .= "</table>";
-                    echo $generated;
-                    ?>
+                        $generated .= "</table>";
+                        echo $generated;
+                        ?>
+                    </div>        
                 </div>
             </div>
                 

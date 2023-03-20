@@ -5,11 +5,12 @@
   font-family: "Fira Sans";
 }
 
-html {
+html,
+body {
   margin: 0;
   overflow: hidden;
-  height: auto;
-  width: auto;
+  height: 100%;
+  width: 100%;
 }
 
 .site-container {
@@ -60,11 +61,19 @@ html {
 .main .allatok-container .allatok-grid {
   grid-area: main;
   background-color: honeydew;
-}
-.main .allatok-container .allatok-grid .allatok {
-  background-color: chartreuse;
-  width: 100%;
   height: 100%;
+}
+.main .allatok-container .allatok-grid .wrapper {
+  height: 100%;
+  overflow-y: scroll;
+}
+.main .allatok-container .allatok-grid .wrapper .allatok {
+  background-color: chartreuse;
+  text-align: center;
+  width: 100%;
+}
+.main .allatok-container .allatok-grid .wrapper .allatok td {
+  height: 200pt;
 }
 
 .footer {

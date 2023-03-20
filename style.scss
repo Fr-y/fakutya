@@ -5,11 +5,12 @@
     font-family: 'Fira Sans';
 }
 
-html {
+html,
+body {
     margin: 0;
     overflow: hidden;
-    height: auto;
-    width: auto;
+    height: 100%;
+    width: 100%;
 }
 
 .site-container {
@@ -58,10 +59,18 @@ html {
         .allatok-grid {
             grid-area: main;
             background-color: honeydew;
-            .allatok {
-                background-color: chartreuse;
-                width: 100%;
-                height: 100%;
+            height: 100%;
+            .wrapper {
+                height: calc(100%);
+                overflow-y: scroll;
+                .allatok {
+                    background-color: chartreuse;
+                    text-align: center;
+                    width: 100%;
+                    td {
+                        height: 200pt;
+                    }
+                }
             }
         }
     }
