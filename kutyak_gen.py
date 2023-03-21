@@ -1,4 +1,7 @@
 from random import randint, choice
+import cv2
+import base64
+
 
 with open('allatnevek.txt', 'r', encoding="utf-8") as f:
     allatnevek = f.readlines()
@@ -17,7 +20,10 @@ for i in range(1, 250):
     fog_allapot = randint(1,4)
     tipus = fajok[randint(0, len(fajok)-1)].rstrip()
     telefon = f"+36{choice([30, 40, 50, 60])}{randint(0,9999999)}"
-    kutya = f"{i},{nev},{added_at},1,0,0,0,{ivar},{kor},{suly},{fog_allapot},{tipus},,,,placeholder,{telefon}"
+    
+    img = f'http://localhost/kutyakepek/{randint(0,566)}.jpg'
+    
+    kutya = f"{i},{nev},{added_at},{randint(0,1)},{randint(0,1)},{randint(0,1)},{ivar},{kor},{suly},{fog_allapot},{tipus},{img},,,,placeholder,{telefon}"
     kutyak.append(kutya)
     
 with open('kutyak.csv', 'w', encoding="utf-8") as f:

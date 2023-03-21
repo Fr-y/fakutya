@@ -1,0 +1,7 @@
+search:
+    név 
+    faj
+    tipus
+    suly 
+    kor 
+    ivar

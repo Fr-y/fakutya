@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Fira Sans";
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 40px;
+  height: 50pt;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+html,
+body {
+  margin: 0;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+.site-container {
+  display: grid;
+  grid-template-areas: "header header header header header header" "main main main main main main" "footer footer footer footer footer footer";
+  grid-template-rows: 10% 85% 5%;
+  gap: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+}
+
+.header {
+  background-color: red;
+  grid-area: header;
+  border: solid 2px #000;
+}
+.header nav {
+  font-size: 2vw;
+  text-align: right;
+}
+.header nav a {
+  color: white;
+  text-decoration: none;
+  background-color: #999;
+  border-radius: 70px;
+  padding: 1.5vw;
+  line-height: 10vh;
+}
+.header nav .active {
+  background-color: green;
+}
+
+.main {
+  background-color: green;
+  grid-area: main;
+  border: solid 2px #000;
+}
+.main .allatok-container {
+  display: grid;
+  grid-template-areas: "search main main main main main";
+  min-height: 100%;
+}
+.main .allatok-container .allatok-search {
+  grid-area: search;
+  background-color: aquamarine;
+  width: 100%;
+}
+.main .allatok-container .allatok-search .search-wrapper {
+  height: 100%;
+}
+.main .allatok-container .allatok-search .search-wrapper form {
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+}
+.main .allatok-container .allatok-search .search-wrapper form input {
+  margin: 5pt;
+  padding: 2pt;
+}
+.main .allatok-container .allatok-grid {
+  grid-area: main;
+  background-color: honeydew;
+  height: 100%;
+}
+.main .allatok-container .allatok-grid .wrapper {
+  overflow-y: scroll;
+  height: 80vh;
+}
+.main .allatok-container .allatok-grid .wrapper .row {
+  flex: 1;
+  display: flex;
+  width: 100%;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+}
+.main .allatok-container .allatok-grid .wrapper .row .card {
+  padding: 20pt;
+  width: 25%;
+  border: solid 2pt;
+  margin: 2pt;
+}
+.main .allatok-container .allatok-grid .wrapper .row .card .thumbnail {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+}
+
+.footer {
+  background-color: gray;
+  grid-area: footer;
+  border: solid 2px #000;
+}
+
+
+
+/*# sourceMappingURL=style.css.map */
