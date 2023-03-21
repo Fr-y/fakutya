@@ -61,15 +61,11 @@ body {
             background-color: honeydew;
             height: 100%;
             .wrapper {
-                height: calc(100%);
-                overflow-y: scroll;
-                .allatok {
+                display: flex;
+                .row {
                     background-color: chartreuse;
                     text-align: center;
                     width: 100%;
-                    td {
-                        height: 200pt;
-                    }
                 }
             }
         }

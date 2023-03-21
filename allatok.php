@@ -31,18 +31,24 @@
                 <div class="allatok-grid">
                     <div class="wrapper">
                         <?php
-                        $generated = '';
-                        $generated .= "<table class=\"allatok\" border='1'>";
-                            for ($x = 1; $x <= 50; $x++) {
-                                $generated .= "<td> $x </td>";
-                                if  ($x % 2 == 0) {
-                                    $generated .= "</tr>";
-                                } elseif ( $x == 0) {
-
+                            $html = '';
+                            $totalItemPerLine = 3;
+                            $totalItem = 7;
+                            for($i = 0; $i < $totalItem; $i++)
+                            {
+                                if($i % $totalItemPerLine == 0)
+                                {
+                                    $html .= '<div class="row">'; // OPEN ROW
                                 }
-                            }
-                        $generated .= "</table>";
-                        echo $generated;
+                            
+                                $html .= '<div class="col">'.$i.'</div>';
+                            
+                                if($i % $totalItemPerLine == ($totalItemPerLine-1) || $i == ($totalItem-1))
+                                {
+                                    $html .= '</div>'; // CLOSE ROW
+                                }
+                            }   
+                            echo $html;
                         ?>
                     </div>        
                 </div>

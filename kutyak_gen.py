@@ -2,6 +2,9 @@ from random import randint, choice
 
 with open('allatnevek.txt', 'r', encoding="utf-8") as f:
     allatnevek = f.readlines()
+    
+with open('kutyafajtak.txt', 'r', encoding="utf-8") as f:
+    fajok = f.readlines()
 
 
 kutyak = []
@@ -12,7 +15,7 @@ for i in range(1, 250):
     kor = randint(1,30)
     suly = randint(1,30)
     fog_allapot = randint(1,4)
-    tipus = randint(0,120)
+    tipus = fajok[randint(0, len(fajok)-1)].rstrip()
     telefon = f"+36{choice([30, 40, 50, 60])}{randint(0,9999999)}"
     kutya = f"{i},{nev},{added_at},1,0,0,0,{ivar},{kor},{suly},{fog_allapot},{tipus},,,,placeholder,{telefon}"
     kutyak.append(kutya)
