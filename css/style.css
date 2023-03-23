@@ -95,7 +95,7 @@ body {
 }
 .main .allatok-container .allatok-grid .wrapper {
   overflow-y: scroll;
-  height: 80vh;
+  height: 85vh;
 }
 .main .allatok-container .allatok-grid .wrapper .row {
   flex: 1;
