@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
-    <link rel="stylesheet" href="css/style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="css/universal.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="css/allatok.css?v=<?php echo time(); ?>">
     <title>Fakutya - Kutyafa Nonprofit Civil Összefogás</title>
 </head>
 
@@ -14,12 +15,13 @@
     <div class="site-container">
         <div class="header">
             <nav>
+                <img src="img/logo.png" alt="FAKUTYA">
                 
-                <a href="index.html">Főoldal</a>
-                <a href="allatok.php" class="active">Állataink</a>
-                <a href="">Menhely</a><!-- nem oldal hanem dropdown -->
+                <a class="nav-btn" href="index.html">Főoldal</a>
+                <a class="nav-btn active" href="allatok.php" >Állataink</a>
+                <a class="nav-btn" href="">Menhely</a><!-- nem oldal hanem dropdown -->
                 
-                <a href="">Elérhetőségek</a><!-- megse lesz oldal hanem popup -->
+                <a class="nav-btn" href="">Elérhetőségek</a><!-- megse lesz oldal hanem popup -->
                 
             </nav>
         </div>
@@ -31,6 +33,15 @@
                         <form action="">
                             <input type="text" name="nev_search" id="nev_search" placeholder="PL.: Zola" autofocus>
                             <input list="fajtak" name="faj_search" id="faj_search" placeholder="Német juhász">
+                            <div class="ivar_search">
+                                <input value="kan" type="radio" name="ivar_search" id="kan_search">
+                                <label for="kan_search">Kan</label>
+                            </div>
+                            <div class="ivar_search">
+                                <input value="szuka" type="radio" name="ivar_search" id="szuka_search">
+                                <label for="szuka_search">Szuka</label>
+                            </div>
+                            
                             <datalist id="fajtak">
                                 <?php
                                 $db = new mysqli("localhost", "root", "", "fakutya");
@@ -44,7 +55,7 @@
                                 ?>
                             </datalist>
 
-                            <input type="submit" value="Szűrés">
+                            <input class="btn" style="border: none;" type="submit" value="Szűrés">
                         </form>
                     </div>
                 </div>
@@ -53,10 +64,14 @@
                         <?php
                             $nev_search = empty($_GET['nev_search']) ? "" : $_GET['nev_search'];
                             $faj_search = empty($_GET['faj_search']) ? "" : $_GET['faj_search'];
+                            $ivar_search = empty($_GET['ivar_search']) ? "" : $_GET['ivar_search'];
+
 
                             $query = "";
                             $query .= "FROM `allat` WHERE nev LIKE \"%$nev_search%\""
-                            ."AND tipus LIKE \"%$faj_search%\";";
+                            ."AND tipus LIKE \"%$faj_search%\""
+                            ."AND ivar LIKE \"%$ivar_search%\";";
+
 
 
                             $db = new mysqli("localhost", "root", "", "fakutya");
@@ -95,12 +110,16 @@
                                 
                                     $html .= '<div class="card">'
                                     .'<div class="img-wrapper">'
-                                    .'<img class="thumbnail" src="'.$img_src.'"></div><br>'
-                                    .$nev."<br>"
-                                    .$tipus."<br>"
-                                    .$added_at."<br>"
-                                    .$kor." éves<br>"
-                                    .$suly."kg"
+                                    .'<a href="/allat_info.php?id='.$allat_id.'">'
+                                    .'<img class="thumbnail" src="'.$img_src.'"></a></div><br>'
+                                    .'<h2 class="allat-nev">'.$nev.'</h2>'
+                                    // .$tipus."<br>"
+                                    // .$added_at."<br>"
+                                    .'<p class="allat-info"><img class="ikon" src="../img/kor.svg">  '.$kor."</p>"
+                                    .'<p class="allat-info"><img class="ikon" src="../img/ivar.svg">  '.$ivar."</p>"
+                                    // .$suly."kg"
+                                    .'<a class="btn" href="/allat_info.php?id='.$allat_id.'">'
+                                    .'További részletek <span class="nyil-ikon"> </span></a>'
                                     .'</div>';
                                 
                                     if($i % $totalItemPerLine == ($totalItemPerLine-1) || $i == ($totalItem-1))
@@ -109,7 +128,7 @@
                                     }
                                 }   
                             } else {
-                                $html .= "Nincs találat, kérjük, próbáld a keresést más feltételekkel.";
+                                $html .= '<h1 style="padding:5pt;">Nincs találat, kérjük, próbáld a keresést más feltételekkel.</h1>';
                             }
                             $db->close();
                             echo $html;
@@ -117,11 +136,11 @@
                     </div>        
                 </div>
             </div>
+            
                 
         </div>
-
         <div class="footer">
-
+        © 2023 FAKUTYA - KUTYAFA NONPROFIT CIVIL ÖSSZEFOGÁS – MINDEN JOG FENNTARTVA. | <a href="/adatkezelezi_tajekoztato.html"> Adatkezelési nyilatkozat </a>
         </div>
 
     </div>

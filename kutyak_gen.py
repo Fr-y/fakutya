@@ -20,10 +20,19 @@ for i in range(1, 250):
     fog_allapot = randint(1,4)
     tipus = fajok[randint(0, len(fajok)-1)].rstrip()
     telefon = f"+36{choice([30, 40, 50, 60])}{randint(0,9999999)}"
+    domain = ""
+    identificator = ""
+    for j in range(randint(3,10)):
+        domain += choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+        
+    for k in range(randint(3,10)):
+        identificator += choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+        
+    email = f"{identificator}@{domain}.com"
     
     img = f'http://localhost/kutyakepek/{randint(0,566)}.jpg'
     
-    kutya = f"{i},{nev},{added_at},{randint(0,1)},{randint(0,1)},{randint(0,1)},{ivar},{kor},{suly},{fog_allapot},{tipus},{img},,,,placeholder,{telefon}"
+    kutya = f"{i},{nev},{added_at},{randint(0,1)},{randint(0,1)},{randint(0,1)},{ivar},{kor},{suly},{fog_allapot},{tipus},{img},,,,{email},{telefon}"
     kutyak.append(kutya)
     
 with open('kutyak.csv', 'w', encoding="utf-8") as f:

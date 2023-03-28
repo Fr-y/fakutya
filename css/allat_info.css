@@ -1,0 +1,40 @@
+.main {
+  background-color: #f2f7f6;
+}
+.main .container {
+  width: 50%;
+  margin: 0 auto;
+  padding-top: 40pt;
+  display: flex;
+  flex-direction: column;
+}
+.main .container .allat-infok {
+  display: flex;
+  flex-direction: row;
+}
+.main .container .allat-infok .kep {
+  margin: 40pt;
+  width: 400pt;
+}
+.main .container .allat-infok .kep img {
+  border-radius: 5px;
+  width: 100%;
+}
+.main .container .allat-infok .info {
+  margin: 40pt;
+  font-size: 30pt;
+}
+.main .container .allat-infok .info .ikon {
+  margin: 1pt;
+  width: 40pt;
+  height: 40pt;
+}
+.main .container .allat-infok .info .allat-info {
+  width: 100%;
+}
+.main .container .orokbefogadas {
+  padding-top: 15rem;
+  font-size: 15pt;
+}
+
+/*# sourceMappingURL=allat_info.css.map */

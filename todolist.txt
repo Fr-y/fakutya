@@ -1,7 +1,7 @@
 search:
-    név 
-    faj
+    név ✅
+    faj✅
     tipus
     suly 
     kor 
-    ivar
+    ivar✅

@@ -1,0 +1,39 @@
+.main {
+    background-color: #f2f7f6;
+    .container {
+        width: 50%;
+        margin: 0 auto;
+        padding-top: 40pt;
+        display: flex;
+        flex-direction: column;
+        .allat-infok {
+            display: flex;
+            flex-direction: row;
+            .kep {
+                margin: 40pt;
+                width: 400pt;
+                img {
+                    border-radius: 5px;
+                    width: 100%;
+                }
+            }
+            .info {
+                margin: 40pt;
+                font-size: 30pt;
+                .ikon {
+                    // vertical-align: text-bottom;
+                    margin: 1pt;
+                    width: 40pt;
+                    height: 40pt;
+                }
+                .allat-info {
+                    width: 100%;
+                }
+            }
+        }
+        .orokbefogadas {
+            padding-top: 15rem;
+            font-size: 15pt;
+        }
+    }
+}
