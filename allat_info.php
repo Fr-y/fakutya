@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
     <link rel="stylesheet" href="css/universal.css">
     <link rel="stylesheet" href="css/allat_info.css">
-    <title>Fakutya - Kutyafa Nonprofit Civil Összefogás</title>
+    <link rel="icon" type="image/x-icon" href="/img/logo.ico">
+
 </head>
 
 <body>
@@ -17,12 +18,12 @@
             <nav>
                 <img src="img/logo.png" alt="FAKUTYA">
 
-                <a class="nav-btn" href="index.html">Főoldal</a>
+                <a class="nav-btn" href="index.php">Főoldal</a>
                 <a class="nav-btn active" href="allatok.php">Állataink</a>
-                <a class="nav-btn" href="">Menhely</a>
+                <a class="nav-btn" href="">Elérhetőségek</a>
                 <!-- nem oldal hanem dropdown -->
 
-                <a class="nav-btn" href="">Elérhetőségek</a>
+                <a class="nav-btn" href="allat_elhelyezes.php">Örökbeadás</a>
                 <!-- megse lesz oldal hanem popup -->
             </nav>
         </div>
@@ -31,14 +32,15 @@
             <div class="container">
                 <div class="allat-infok">
                 <?php
-                    $db = new mysqli("localhost", "root", "", "fakutya");
-                    $db_amount = $db->query("SELECT COUNT(*) FROM allat");
+                    require_once "config.php";
+
+                    $db_amount = $link->query("SELECT COUNT(*) FROM allat");
                     $totalItem = $db_amount->fetch_row()[0];
                     $url_allat_id = $_GET['id'];
 
                     if ($url_allat_id <= $totalItem) {
-                        $allat = $db->query("SELECT * FROM `allat` WHERE `allat_id` = \"$url_allat_id\"");
-                        $fog_lekerdezes = $db->query("SELECT fog_dict.JELENTES from fog_dict INNER JOIN allat on allat.FOG_ALLAPOT = fog_dict.FOG_ALLAPOT WHERE allat.ALLAT_ID = \"$url_allat_id\";");
+                        $allat = $link->query("SELECT * FROM `allat` WHERE `allat_id` = \"$url_allat_id\"");
+                        $fog_lekerdezes = $link->query("SELECT fog_dict.JELENTES from fog_dict INNER JOIN allat on allat.FOG_ALLAPOT = fog_dict.FOG_ALLAPOT WHERE allat.ALLAT_ID = \"$url_allat_id\";");
 
                         
                         $mezo = $allat -> fetch_row();
@@ -61,8 +63,8 @@
                         $ivar = $mezo[6];
                         $kor = $mezo[7];
                         $suly = $mezo[8];
-                        $tipus = $mezo[10];
-                        $img_src = $mezo[11];
+                        $tipus = $mezo[11];
+                        $img_src = $mezo[12];
                         $leiras = $mezo[14];
                         $email = $mezo[15];
                         $telefon = $mezo[16];
@@ -72,6 +74,7 @@
                         .'<img src="'.$img_src.'" alt="'.$nev.'">'
                         .'</div>'
                         .'<div class="info">'
+                        .'<p class="allat-info">'.$tipus."</p>"
                         .'<p class="allat-info"><img class="ikon" src="../img/kor.svg">  '.$kor." éves</p>"
                         .'<p class="allat-info"><img class="ikon" src="../img/ivar.svg">  '.$ivar."</p>"
                         .'<p class="allat-info"><img class="ikon" src="../img/fogazat.svg">  '.$fog_allapot."</p>"
@@ -109,5 +112,6 @@
     </div>
 
 </body>
+<title><?php echo $nev ?> ≫ Kutyafa Nonprofit Civil Összefogás</title>
 
 </html>

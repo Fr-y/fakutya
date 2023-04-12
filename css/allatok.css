@@ -30,6 +30,15 @@
   width: 45pt;
   height: 45pt;
 }
+.main .allatok-container .allatok-search .search-wrapper form .kor_search {
+  font-size: 20pt;
+}
+.main .allatok-container .allatok-search .search-wrapper form .kor_search input[type=checkbox] {
+  vertical-align: text-bottom;
+  border: 0px;
+  width: 25pt;
+  height: 25pt;
+}
 .main .allatok-grid {
   grid-area: main;
   background-color: #f2f7f6;
@@ -51,7 +60,6 @@
 }
 .main .allatok-grid .wrapper .row .card {
   padding: 20pt;
-  width: 25%;
   margin: 2pt;
   font-size: 20pt;
 }

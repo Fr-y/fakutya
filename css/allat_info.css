@@ -1,12 +1,19 @@
+* {
+  overflow: auto;
+}
+
 .main {
   background-color: #f2f7f6;
 }
 .main .container {
-  width: 50%;
+  width: 70%;
   margin: 0 auto;
   padding-top: 40pt;
+  padding: 20pt;
   display: flex;
   flex-direction: column;
+  background-color: rgba(232, 235, 234, 0.337254902);
+  border-radius: 20pt;
 }
 .main .container .allat-infok {
   display: flex;
