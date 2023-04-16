@@ -66,8 +66,8 @@
                         $tipus = $mezo[11];
                         $img_src = $mezo[12];
                         $leiras = $mezo[14];
-                        $email = $mezo[15];
-                        $telefon = $mezo[16];
+                        $email = $mezo[16];
+                        $telefon = $mezo[17];
 
                         $html = '';
                         $html .= '<div class="kep">'

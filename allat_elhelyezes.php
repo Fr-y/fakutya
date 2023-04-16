@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="site-container" style="text-align: center; width:50%; margin: 0 auto;">
-        <form class="form-container">
+        <form method="post" class="form-container">
             <h1>Állat örökbeadása</h1>
             <ul>
 
@@ -24,6 +24,9 @@
                 <option value="kan">Kan</option>
                 <option value="szuka">Szuka</option>
                 </select>
+            </li>
+            <li>
+                <label for="ivartalan">Ivartalanított?</label> <input type="checkbox" name="ivartalan" id="ivartalan">
             </li>
             <li> <label for="kor">Állat becsült vagy számított kora (év):</label><input required min="0" max="30" type="number" name="kor"></li>
             <li> <label for="suly">Állat becsült vagy pontos súlya:</label><input required type="number" min="0" max="60" name="suly"></li>
@@ -59,21 +62,52 @@
                 </datalist>
             </li>
             <li>
-                <label for="img_upload">Kép az állatról: </label>
-                <input id="img_upload" type="file" alt="Submit" width="360" height="360">
+                <label for="kep">Kép az állatról: </label>
+                <input name="kep" id="kep" type="file" width="360" height="360">
                 <img width="280" height="280" src="img/upload.png" alt=" " id="img_display">
                 <script lang="JavaScript">
-                    document.getElementById("img_upload").onchange = function(event) {
+                    document.getElementById("kep").onchange = function(event) {
                     var tmppath = URL.createObjectURL(event.target.files[0]);
                         document.getElementById("img_display").src = tmppath;
                     };
                 </script>
-
-
+            </li>
+            <li>
+                    <label for="email">Email: </label> <input type="email" name="email", id="email">
+            </li>
+            <li>
+                    <label for="telefon">Telefonszám: </label> <input type="tel" name="telefon", id="telefon">
             </li>
             
 
-            <input type="submit" value="">
+            <input type="submit" name="submit" value="submit">
+            <?php
+                require_once "config.php";
+                if(isset($_POST["submit"])){
+                    $feltoltes = $link->Prepare("INSERT INTO allat (NEV, IS_IVARTALAN, IVAR, KOR, SULY, FOG_ALLAPOT, FAJ, TIPUS, IMG, EMAIL, TELEFON) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+                    if ($_POST["ivartalan"] = "on") {
+                        $ivartalan = 1;
+                    } else {
+                        $ivartalan = 0;
+                    }
+                    ob_start();
+                    include('allat_elhelyezes.php');
+                    $html = ob_get_clean();
+                    $dom = new DOMDocument();
+                    $dom->loadHTML($html);
+                    $img = $dom->getElementsByTagName('img')->item(0);
+                    $src = $img->getAttribute('src');
+                    $db_amount = $link->query("SELECT COUNT(allat_id) FROM `allat`;");
+                    $id = $db_amount->fetch_row()[0] + 1;
+                    $path = "allatkepek/$id.jpg";
+                    copy($src, $path);
+
+               
+
+                    $feltoltes->execute([$_POST["nev"],$ivartalan,$_POST["ivar"],$_POST["kor"],$_POST["suly"],$_POST["fog_allapot"],$_POST["faj"],$_POST["tipus"],$path,$_POST["email"],$_POST["telefon"]]);
+                }
+
+            ?>
 
         </form>
     </div>
