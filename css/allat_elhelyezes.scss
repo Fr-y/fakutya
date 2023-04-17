@@ -1,4 +1,132 @@
-.site-container {
-    overflow: scroll;
-    .form-container {}
+/* general styles for the form */
+
+body {
+    overflow-y: scroll;
+}
+
+.form-container {
+    max-width: 38em;
+    padding: 2em 3em 2em 3em;
+    margin: 1em auto;
+    background-color: #fff;
+    border-radius: 4.2px;
+    box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+input[type="email"],
+input[type="tel"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #f0879d;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+input[type="submit"]:hover {
+    background-color: #e16f85;
+}
+
+
+/* specific styles for the form elements */
+
+.form-container h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #f0879d;
+    text-align: center;
+}
+
+#img_display {
+    margin-top: 10px;
+}
+
+.form-container label[for="kep"],
+.form-container input[type="file"] {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.form-container input[type="file"] {
+    margin-left: 10px;
+}
+
+
+/* light color palette */
+
+body {
+    background-color: #f7f7f7;
+}
+
+.form-container {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"],
+input[type="number"],
+select,
+input[type="email"],
+input[type="tel"],
+input[type="checkbox"],
+input[type="radio"] {
+    background-color: #fff;
+    border: 1px solid #dcdcdc;
+    color: #333;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #f0879d;
+}
+
+input[type="checkbox"]:checked:before {
+    font-size: 1.2em;
+    display: inline-block;
+    padding-right: 5px;
+    vertical-align: middle;
+}
+
+input[type="radio"]:checked:before {
+    content: "\25cf";
+    font-size: 1.2em;
+    display: inline-block;
+    padding-right: 5px;
+    vertical-align: middle;
+    color: #f0879d;
+}
+
+input[type="submit"] {
+    background-color: #f0879d;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    background-color: #e16f85;
 }

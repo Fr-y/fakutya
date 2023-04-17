@@ -201,12 +201,12 @@
                                     $IS_QUARANTINED = $row[3];
                                     $IS_BEFOGADHATO = $row[4];
                                     $IS_IVARTALAN = $row[5];
-                                    $ivar = $row[6];
-                                    $kor = $row[7];
-                                    $suly = $row[8];
-                                    $fog_allapot = $row[9];
-                                    $tipus = $row[10];
-                                    $img_src = $row[12];
+                                    $ivar = $row[7];
+                                    $kor = $row[8];
+                                    $suly = $row[9];
+                                    $fog_allapot = $row[10];
+                                    $tipus = $row[11];
+                                    $img_src = $row[13];
 
 
 

@@ -60,21 +60,26 @@
                         }else{
                             $ivaros = "nincs ivartalanítva";
                         }
-                        $ivar = $mezo[6];
-                        $kor = $mezo[7];
-                        $suly = $mezo[8];
-                        $tipus = $mezo[11];
-                        $img_src = $mezo[12];
-                        $leiras = $mezo[14];
-                        $email = $mezo[16];
-                        $telefon = $mezo[17];
+                        $ivar = $mezo[7];
+                        $kor = $mezo[8];
+                        $suly = $mezo[9];
+                        $faj = $mezo[11];
+                        $tipus = $mezo[12];
+                        $img_src = $mezo[13];
+                        $allapot = $mezo[14];
+                        $tulajdonsagok = $mezo[15];
+                        $comment = $mezo[16];
+
+                        $email = $mezo[17];
+                        $telefon = $mezo[18];
 
                         $html = '';
                         $html .= '<div class="kep">'
                         .'<img src="'.$img_src.'" alt="'.$nev.'">'
                         .'</div>'
                         .'<div class="info">'
-                        .'<p class="allat-info">'.$tipus."</p>"
+                        .'<h1>'.$nev.'</h1>'
+                        .'<p class="allat-info">'.$faj.': '.$tipus."</p>"
                         .'<p class="allat-info"><img class="ikon" src="../img/kor.svg">  '.$kor." éves</p>"
                         .'<p class="allat-info"><img class="ikon" src="../img/ivar.svg">  '.$ivar."</p>"
                         .'<p class="allat-info"><img class="ikon" src="../img/fogazat.svg">  '.$fog_allapot."</p>"
@@ -89,8 +94,14 @@
                         echo $html;
                         echo '</div>
                         <div class="orokbefogadas">
-                            <p> '.$leiras.' </p> <br>
-                            <p> <b> Fontos!</b> Ha megtetszettem neked, kérlek, csak abban az esetben jelentkezz örökbefogadónak, ha egy életre elköteleződnél velem kapcsolatban és felelős állattartó vagy, akinél a kutya nem kerti dísz, hanem családtag. Vállalod, hogy költözésnél (akár külföldre, akár kertből lakásba, akár másik albérletbe) engem is, mint egy másik családtagodat viszel magaddal és gondoskodsz arról, hogy ha veled bármi történik, nekem akkor is legyen hol és legfőképpen biztonságban élnem.</p>
+                            <h1>Állat tulajdonságai</h1><br>
+                            <p> '.$tulajdonsagok.' </p> <br>
+                            <h1>Állat állapota</h1><br>
+                            <p> '.$allapot.' </p> <br>
+                            <h1>Egyéb információk</h1><br>
+                            <p> '.$comment.' </p> <br>
+
+                            <p style="background-color: #ff111122; border-radius:5pt;"> <b> Fontos!</b> Ha megtetszettem neked, kérlek, csak abban az esetben jelentkezz örökbefogadónak, ha egy életre elköteleződnél velem kapcsolatban és felelős állattartó vagy, akinél a kutya nem kerti dísz, hanem családtag. Vállalod, hogy költözésnél (akár külföldre, akár kertből lakásba, akár másik albérletbe) engem is, mint egy másik családtagodat viszel magaddal és gondoskodsz arról, hogy ha veled bármi történik, nekem akkor is legyen hol és legfőképpen biztonságban élnem.</p>
                         </div>';
                         
                     }else {
