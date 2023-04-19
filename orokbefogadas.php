@@ -10,7 +10,7 @@
     $insert = $link->query($insert_sql);
 
     $tranzakcio_sql = 'INSERT INTO `tranzakciok`(`USER_ID`, `ALLAT_ID`, `TIPUS`) VALUES ('.$_SESSION["id"].','.$url_allat_id.', befogadas)';
-    $tranzakcio = $link->query($tranzakcio_sql)
+    $tranzakcio = $link->query($tranzakcio_sql);
 
 
     header("location:javascript://history.go(-1)");
