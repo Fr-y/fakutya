@@ -8,59 +8,23 @@
     <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
     <link rel="stylesheet" href="css/universal.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="css/allatok.css?v=<?php echo time(); ?>">
+
     <link rel="icon" type="image/x-icon" href="/img/logo.ico">
 
 
     <script> 
-
-        function setCookie(cname,cvalue,exdays) {
-        var d = new Date();
-        d.setTime(d.getTime()+(exdays*24*60*60*1000));
-        var expires = "expires="+d.toGMTString();
-        document.cookie = cname + "=" + cvalue + "; " + expires;
+        window.onload = function() {
+        // Set cookie with window height and width
+        document.cookie = "windowHeight=" + window.innerHeight + ";";
+        document.cookie = "windowWidth=" + window.innerWidth + ";";
         }
-
-        function window_height() {
-        if (document.body) {
-            winH = document.body.offsetHeight;
-        }
-
-        if (document.compatMode=='CSS1Compat' &&
-            document.documentElement &&
-            document.documentElement.offsetHeight ) {
-            winH = document.documentElement.offsetHeight;
-            return winH
-        }
-
-        if (window.innerHeight && window.innerHeight) {
-            winH = window.innerHeight;
-            return winH;
-        }
-        }     
-
-        function window_width() {
-        if (document.body) {
-        winW = document.body.offsetWidth;
-        }
-
-        if (document.compatMode=='CSS1Compat' &&
-        document.documentElement &&
-        document.documentElement.offsetWidth ) {
-        winW = document.documentElement.offsetWidth;
-        return winW
-        }
-
-        if (window.innerWidth && window.innerWidth) {
-        winW = window.innerWidth;
-        return winW;
-        }
-        }      
-        /* Upon page load, get the page width and height, and store in a JSON object/Cookie */
-        setTimeout(function(){
-        setCookie('w_w',JSON.stringify({'width':window_width(),'height':window_height()}))
-        })
-
     </script>
+    <?php
+    if(!isset($_COOKIE['windowHeight']) && !isset($_COOKIE['windowWidth'])) {
+        header("Refresh:0");
+        exit();
+    }
+    ?>
 
     <title>Állataink ≫ Kutyafa Nonprofit Civil Összefogás</title>
 </head>
@@ -76,10 +40,14 @@
                 <a class="nav-btn " href="./index.php#elerhetoseg">Elérhetőségek</a>
                 <!-- nem oldal hanem dropdown -->
                 <a class="nav-btn" href="allat_elhelyezes.php">Örökbeadás</a>
-
-
-                <?php session_start();
-                echo $_SESSION["username"] ?>
+                <?php
+                    session_start();
+                    if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+                        echo '<a class="nav-btn" href="user_system/login.php"> Bejelentkezés</a>';
+                    } else {
+                        echo '<a class="nav-btn" href="fiok.php">'. $_SESSION["username"].'</a>';
+                    }
+                    ?>
                 
             </nav>
         </div>
@@ -89,6 +57,9 @@
                 <div class="allatok-search">
                     <div class="search-wrapper">
                         <form action="">
+                            <label style="display: inline-block;" for="befogadhato">Azonnal befogadható:</label>
+                            <input style="width: 20pt;" type="checkbox" name="befogadhato" id="befogadhato">
+                            <hr>
                             <input type="text" name="nev_search" id="nev_search" placeholder="PL.: Zola" autofocus>
                             <hr>
                             <input list="fajtak" name="faj_search" id="faj_search" placeholder="Német juhász">
@@ -171,14 +142,20 @@
                                     }
                                 }
                             }
+                            if (!empty($_GET['befogadhato'])) {
+                                if ($_GET['befogadhato'] == "on") {
+                                    $query.="AND IS_BEFOGADHATO = 1";
+                                }
+                            }
+                            
+                            
 
-                            $db = new mysqli("localhost", "root", "", "fakutya");
-                            $db_amount = $db->query("SELECT COUNT(*) $query");
-                            $result = $db->query("SELECT * $query");
+                            require_once "config.php";
+                            $db_amount = $link->query("SELECT COUNT(*) $query");
+                            $result = $link->query("SELECT * $query");
 
-                            $xy=json_decode($_COOKIE['w_w']);
-                            $width=$xy->width;
-                            $height=$xy->height;
+                            $height= $_COOKIE['windowHeight'];
+                            $width= $_COOKIE['windowWidth'];
                             
                             $html = '';
                             if ($width > 640) {
@@ -237,7 +214,6 @@
                             } else {
                                 $html .= '<h1 style="padding:5pt;">Nincs találat, kérjük, próbáld a keresést más feltételekkel.</h1>';
                             }
-                            $db->close();
                             echo $html;
                         ?>
                     </div>        
@@ -247,7 +223,7 @@
                 
         </div>
         <div class="footer">
-        © 2023 FAKUTYA - KUTYAFA NONPROFIT CIVIL ÖSSZEFOGÁS – MINDEN JOG FENNTARTVA. | <a href="/adatkezelezi_tajekoztato.html"> Adatkezelési nyilatkozat </a>
+        © 2023 FAKUTYA - KUTYAFA NONPROFIT CIVIL ÖSSZEFOGÁS – MINDEN JOG FENNTARTVA. | <a href="adatkezelesi_tajekoztato.html"> Adatkezelési nyilatkozat </a>
         </div>
 
     </div>

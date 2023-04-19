@@ -88,6 +88,13 @@ body {
   background: #e4d2d6;
   color: #fff;
 }
+.btn[disabled] {
+  color: #f2f7f6;
+  cursor: not-allowed;
+}
+.btn[disabled]:hover {
+  color: #f2f7f6;
+}
 
 .header {
   background-color: #bdcdc9;
@@ -146,6 +153,26 @@ body {
 li {
   list-style-type: none;
   margin-top: 30pt;
+}
+
+.star {
+  color: red;
+}
+
+textarea {
+  resize: none;
+  width: 100%;
+  border: #f098ab 1px solid;
+  border-radius: 8pt;
+  padding: 5pt;
+}
+textarea:focus-visible {
+  border: #f098ab 5px solid;
+  outline: none;
+}
+
+p:first-letter {
+  text-transform: uppercase;
 }
 
 /*# sourceMappingURL=universal.css.map */

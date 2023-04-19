@@ -94,13 +94,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             $param_username = $username;
             $param_email = $email;
-            $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+            $param_password = crypt($password, PASSWORD_DEFAULT); // Creates a password hash
 
             
             if(mysqli_stmt_execute($stmt)){
-                header("location: ../index.html");
+                header("location: ../index.php");
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Valami nem sikerült, próbáld újra.";
             }
 
             mysqli_stmt_close($stmt);
@@ -114,8 +114,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Regisztráció - Kutyafa Nonprofit Civil Összefogás</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Regisztráció ≫ Kutyafa Nonprofit Civil Összefogás</title>
+    <link rel="stylesheet" href="../css/universal.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/forms.css?v=<?php echo time(); ?>">
     <link rel="icon" type="image/x-icon" href="/img/logo.ico">
 
     <style>
@@ -124,35 +125,42 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <h2>Regisztráció</h2>
-        <hr>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group">
-                <label>Név</label>
-                <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                <span class="invalid-feedback"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>">
-                <span class="invalid-feedback"><?php echo $email_err; ?></span>
-            </div>   
-            <div class="form-group">
-                <label>Jelszó</label>
-                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
-                <span class="invalid-feedback"><?php echo $password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <label>Jelszó megerősítése</label>
-                <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
-                <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <input type="reset" class="btn btn-secondary ml-2" value="Reset">
-            </div>
-            <p>Already have an account? <a href="login.php">Login here</a>.</p>
+    <div class="container">
+        <form class="form-container" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <h1>Regisztráció</h1>
+            <ul>
+                <li>
+                    <label>Név</label>
+                    <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                    <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                </li>    
+                <li>
+                    <label>Email</label>
+                    <input type="email" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>">
+                    <span class="invalid-feedback"><?php echo $email_err; ?></span>
+                </li>   
+                <li>
+                    <label>Jelszó</label>
+                    <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
+                    <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                </li>
+                <li>
+                    <label>Jelszó megerősítése</label>
+                    <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
+                    <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
+                </li>
+                <li>
+                    <label for="kert">Tudsz e kertet nyújtani állatoknak?</label>
+                    <label for="kert-igen">Igen</label>
+                    <input type="radio" id="kert-igen" name="kert" value="0">
+                    <label for="kert-nem">Nem</label>
+                    <input type="radio" id="kert-nem" name="kert" value="1">
+                </li>
+                <li>
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                </li>
+            </ul>
+            <p>Van már fiókod? <a href="login.php">Jelentkezz be itt</a>!</p>
         </form>
     </div>    
 </body>

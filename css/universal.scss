@@ -87,6 +87,13 @@ body {
         background: #e4d2d6;
         color: #fff;
     }
+    &[disabled] {
+        color: #f2f7f6;
+        cursor: not-allowed;
+        &:hover {
+            color: #f2f7f6;
+        }
+    }
 }
 
 .header {
@@ -148,4 +155,24 @@ body {
 li {
     list-style-type: none;
     margin-top: 30pt;
+}
+
+.star {
+    color: red;
+}
+
+textarea {
+    resize: none;
+    width: 100%;
+    border: #f098ab 1px solid;
+    border-radius: 8pt;
+    &:focus-visible {
+        border: #f098ab 5px solid;
+        outline: none;
+    }
+    padding: 5pt;
+}
+
+p:first-letter {
+    text-transform: uppercase
 }

@@ -22,13 +22,23 @@
                 <a class="nav-btn active" href="index.php">Főoldal</a>
                 <a class="nav-btn" href="allatok.php">Állataink</a>
                 <a class="nav-btn" href="#elerhetoseg">Elérhetőségek</a>
-                <!-- nem oldal hanem dropdown -->
-
                 <a class="nav-btn" href="allat_elhelyezes.php">Örökbeadás</a>
+                    <?php
+                    session_start();
+                    if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+                        echo '<a class="nav-btn" href="user_system/login.php"> Bejelentkezés</a>';
+                    } else {
+                        echo '<a class="nav-btn" href="fiok.php">'. $_SESSION["username"].'</a>';
+                    }
+                    ?>
+                
+
+
             </nav>
 
         </div>
         <div class="main">
+        <script type="text/javascript" src="https://cookieconsent.popupsmart.com/src/js/popper.js"></script><script> window.start.init({Palette:"palette2",Mode:"banner bottom",Theme:"classic",Message:"Ez a weboldal cookie-kat használ annak érdekében, hogy a legjobb élményt nyújthassa webhelyünk.",ButtonText:"Értem",LinkText:"",Time:"1",})</script>
             <div class="about-content">
                 <div class="img-container">
                     <img class="mainpage-img" src="kutyakepek/225.jpg">
@@ -100,7 +110,7 @@
                 <div class="text">
                     <h1 >Elérhetőségeink</h1>
                     <br>
-                    <ul>
+                    <ul style="text-align: left;">
                         <li><b> KUTYAFA NONPROFIT CIVIL ÖSSZEFOGÁS</b></li>
                         <li>Budapest, Mária királyné útja 18, 1213</li>
                         <li>+36 50 121 73 04</li>

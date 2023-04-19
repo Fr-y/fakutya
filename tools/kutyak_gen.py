@@ -13,7 +13,7 @@ with open('kutyafajtak.txt', 'r', encoding="utf-8") as f:
 chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 fajok = ["kutya","macska","hörcsög","egér","papagáj"]
 kutyak = []
-for i in range(1, 250):
+for i in range(1, 300):
     nev = allatnevek[randint(0, len(allatnevek)-1)].rstrip()
     added_at = f"{randint(2020, 2023)}-{randint(1, 12)}-{randint(1, 28)} {randint(0, 24)}:{randint(0, 60)}:{randint(0, 60)}"
     is_quarantined = randint(0, 1)
@@ -26,7 +26,7 @@ for i in range(1, 250):
     fog_allapot = randint(1,4)
     faj = choice(fajok)
     tipus = kutyafajok[randint(0, len(kutyafajok)-1)].rstrip()
-    img = f'http://localhost/kutyakepek/{randint(0,566)}.jpg'
+    img = f'kutyakepek/{randint(0,566)}.jpg'
     allapot = get_sentence(count=2, comma=(0, 2), word_range=(4, 10), sep=' ')
     tulajdonsagok = get_sentence(count=3, comma=(0, 2), word_range=(4, 10), sep=' ')
     comment = get_sentence(count=6, comma=(0, 4), word_range=(4, 10), sep=' ')
