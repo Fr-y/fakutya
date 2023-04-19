@@ -65,7 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             mysqli_stmt_close($stmt);
         }
     }
-    
+
     // Validate password
     if(empty(trim($_POST["password"]))){
         $password_err = "Adj meg egy jelszót.";     
@@ -84,13 +84,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $confirm_password_err = "A jelszavak nem egyeznek.";
         }
     }
+
+    if ($_POST["kert"] = "on") {
+        $param_kert = 1;
+    } else {
+        $param_kert = 0;
+    }
     
     if(empty($username_err) && empty($email_err) && empty($password_err) && empty($confirm_password_err)){
         
-        $sql = "INSERT INTO orokbefogado (username, password, email) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO orokbefogado (username, password, email, kert) VALUES (?, ?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
-            mysqli_stmt_bind_param($stmt, "sss", $param_username, $param_password, $param_email);
+            mysqli_stmt_bind_param($stmt, "sssi", $param_username, $param_password, $param_email, $param_kert);
             
             $param_username = $username;
             $param_email = $email;
@@ -152,9 +158,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <li>
                     <label for="kert">Tudsz e kertet nyújtani állatoknak?</label>
                     <label for="kert-igen">Igen</label>
-                    <input type="radio" id="kert-igen" name="kert" value="0">
+                    <input required type="radio" id="kert-igen" name="kert" value="0">
                     <label for="kert-nem">Nem</label>
-                    <input type="radio" id="kert-nem" name="kert" value="1">
+                    <input required type="radio" id="kert-nem" name="kert" value="1">
                 </li>
                 <li>
                     <input type="submit" class="btn btn-primary" value="Submit">

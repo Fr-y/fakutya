@@ -129,7 +129,7 @@
                             $kor_search = empty($_GET['kor_search']) ? "" : $_GET['kor_search'];
 
                             $query = "";
-                            $query .= "FROM `allat` WHERE nev LIKE \"%$nev_search%\""
+                            $query .= "FROM `allat` WHERE befogadott = 0 AND  nev LIKE \"%$nev_search%\""
                             ."AND tipus LIKE \"%$faj_search%\""
                             ."AND ivar LIKE \"%$ivar_search%\"";
                             if (!empty($kor_search)) {
@@ -147,7 +147,7 @@
                                     $query.="AND IS_BEFOGADHATO = 1";
                                 }
                             }
-                            
+
                             
 
                             require_once "config.php";
@@ -174,14 +174,8 @@
 
                                     $allat_id = $row[0];
                                     $nev = $row[1];
-                                    $added_at = substr($row[2], 0, 10);
-                                    $IS_QUARANTINED = $row[3];
-                                    $IS_BEFOGADHATO = $row[4];
-                                    $IS_IVARTALAN = $row[5];
                                     $ivar = $row[7];
                                     $kor = $row[8];
-                                    $suly = $row[9];
-                                    $fog_allapot = $row[10];
                                     $tipus = $row[11];
                                     $img_src = $row[13];
 
@@ -189,7 +183,7 @@
 
                                     if($i % $totalItemPerLine == 0)
                                     {
-                                        $html .= '<div class="row">'; // OPEN ROW
+                                        $html .= '<div class="row">';
                                     }
                                 
                                     $html .= '<div style="width: '. 100 / $totalItemPerLine. '%" class="card">'
@@ -197,18 +191,15 @@
                                     .'<a href="/allat_info.php?id='.$allat_id.'">'
                                     .'<img class="thumbnail" src="'.$img_src.'"></a></div><br>'
                                     .'<h2 class="allat-nev">'.$nev.'</h2>'
-                                    // .$tipus."<br>"
-                                    // .$added_at."<br>"
                                     .'<p class="allat-info"><img class="ikon" src="../img/kor.svg">  '.$kor."</p>"
                                     .'<p class="allat-info"><img class="ikon" src="../img/ivar.svg">  '.$ivar."</p>"
-                                    // .$suly."kg"
                                     .'<a class="btn" href="/allat_info.php?id='.$allat_id.'">'
                                     .'További részletek <span class="nyil-ikon"> </span></a>'
                                     .'</div>';
                                 
                                     if($i % $totalItemPerLine == ($totalItemPerLine-1) || $i == ($totalItem-1))
                                     {
-                                        $html .= '</div>'; // CLOSE ROW
+                                        $html .= '</div>';
                                     }
                                 }   
                             } else {

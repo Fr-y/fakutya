@@ -47,6 +47,10 @@
                     if ($url_allat_id <= $totalItem) {
                         $allat = $link->query("SELECT * FROM `allat` WHERE `allat_id` = \"$url_allat_id\"");
                         $fog_lekerdezes = $link->query("SELECT fog_dict.JELENTES from fog_dict INNER JOIN allat on allat.FOG_ALLAPOT = fog_dict.FOG_ALLAPOT WHERE allat.ALLAT_ID = \"$url_allat_id\";");
+                        if(isset($_SESSION["loggedin"])){
+                            $kert_lekerdezes = $link->query('SELECT kert FROM orokbefogado WHERE user_id = '.$_SESSION["id"]);
+                            $kert = $kert_lekerdezes->fetch_row()[0];
+                        }
 
                         
                         $mezo = $allat -> fetch_row();
@@ -83,7 +87,11 @@
                             $orokbefogadashtml = '<button disabled class="btn" style="background-color:red;">Örökbefogadáshoz jelentkezz be!</button>';
                         } else {
                             if ($IS_QUARANTINED == 0 && $IS_CHIPPED == 1 && $BEFOGADOTT == 0) {
-                                $orokbefogadashtml = '<a href="orokbefogadas.php" class="btn" >Örökbefogadás</a>';
+                                if (($suly > 5 && $kert == 1) || ($suly <= 5)) {
+                                    $orokbefogadashtml = '<a href="orokbefogadas.php?id='.$allat_id.'" class="btn" >Örökbefogadás</a>';
+                                } else {
+                                    $orokbefogadashtml = '<button title="Ez az állat túl nagy hogy kert nélkül lakhasson!" disabled class="btn" style="background-color:red;">Ezt az állatot nem fogadhatod be!</button>';
+                                }
                             } else {
                                 $orokbefogadashtml = '<button title="Az állat jelenleg nem befogadható. Gyere vissza késöbb!" disabled class="btn" style="background-color:red;">Örökbefogadás</button>';
                             }

@@ -135,7 +135,7 @@
                 $db_amount = $link->query("SELECT COUNT(*) FROM allat");
                 $totalItem = $db_amount->fetch_row()[0];
                 if(isset($_POST["submit"])){
-                    $feltoltes = $link->Prepare("INSERT INTO allat (NEV, IS_IVARTALAN, IS_CHIPPED, IVAR, KOR, SULY, FOG_ALLAPOT, FAJ, TIPUS, IMG, ALLAPOT, TULAJDONSAGOK, EMAIL, TELEFON) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                    $feltoltes = $link->Prepare("INSERT INTO allat (NEV, IS_IVARTALAN, IS_CHIPPED, IVAR, KOR, SULY, FOG_ALLAPOT, FAJ, TIPUS, IMG, ALLAPOT, TULAJDONSAGOK, EMAIL, TELEFON, USER_ID) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
                     if ($_POST["ivartalan"] = "on") {
                         $ivartalan = 1;
                     } else {
@@ -164,7 +164,7 @@
                     
                
 
-                    $feltoltes->execute([$_POST["nev"],$ivartalan,$chipped,$_POST["ivar"],$_POST["kor"],$_POST["suly"],$_POST["fog_allapot"],$faj,$_POST["tipus"],$img,$_POST["allapot"],$_POST["tulajdonsagok"],$_POST["email"],$_POST["num"]]);
+                    $feltoltes->execute([$_POST["nev"],$ivartalan,$chipped,$_POST["ivar"],$_POST["kor"],$_POST["suly"],$_POST["fog_allapot"],$faj,$_POST["tipus"],$img,$_POST["allapot"],$_POST["tulajdonsagok"],$_POST["email"],$_POST["num"],$_SESSION["id"]]);
                     echo '<script>window.location.href = "/index.php";</script>';
                 }
 ?>

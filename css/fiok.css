@@ -1,3 +1,50 @@
-
+body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+body h1 {
+  text-align: center;
+  font-size: 40pt;
+}
+body .row {
+  flex: 3;
+  display: flex;
+  width: 100%;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+}
+body .row .card {
+  padding: 20pt;
+  margin: 2pt;
+  font-size: 20pt;
+}
+body .row .card .img-wrapper {
+  width: 380pt;
+  overflow: hidden;
+  border-radius: 5pt;
+  box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+}
+body .row .card .img-wrapper img {
+  width: 100%;
+  height: 200pt;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+body .row .card .img-wrapper img:hover {
+  transform: scale(1.5);
+}
+body .row .card .img-wrapper a {
+  display: block;
+  height: 200pt;
+}
+body .row .card .btn .nyil-ikon {
+  margin: 1pt;
+  width: 10pt;
+  height: 10pt;
+  background: url(../img/nyil.svg) no-repeat center center;
+}
+body .row .card .allat-info {
+  line-height: 4pt;
+}
 
 /*# sourceMappingURL=fiok.css.map */
