@@ -81,7 +81,7 @@
                                 $results = $link->query("SELECT kor, COUNT(*) as total FROM `allat` GROUP BY kor");
                                 $counts = array_fill(1, 5, 0);
                                 while ($row = $results->fetch_assoc()) {
-                                    $counts[$row['kor'] <= 5 ? 1 : ($row['kor'] <= 10 ? 2 : ($row['kor'] <= 15 ? 3 : ($row['kor'] <= 20 ? 4 : 5)))] += $row['total'];
+                                    $counts[$row['kor'] <= 5 ? 1 : ($row['kor'] <= 10 ? 2 : ($row['kor'] <= 15 ? 3 : ($row['kor'] < 20 ? 4 : ($row['kor'] >= 20 ? 5 : 5))))] += $row['total'];
                                 }
                                 $html = '
                                 <div class="kor_search">
@@ -97,7 +97,7 @@
                                     <input value="15 and 20 " type="checkbox" id="3" name="kor_search[]"><label for="3">15 - 20 <span style="color:#66666666;">('.$counts[4].')</span> </label>
                                 </div>
                                 <div class="kor_search">
-                                    <input value="20 and 30 " type="checkbox" id="4" name="kor_search[]"><label name="4label" for="4">> 20 <span style="color:#66666666;">('.$counts[4].')</span> </label>
+                                    <input value="20 and 30 " type="checkbox" id="4" name="kor_search[]"><label name="4label" for="4">> 20 <span style="color:#66666666;">('.$counts[5].')</span> </label>
                                 </div>
                                 <hr>';
                                 echo $html;

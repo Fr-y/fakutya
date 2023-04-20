@@ -42,7 +42,7 @@
 
             $html = '';
 
-            $totalItemPerLine = 4;
+            $totalItemPerLine = 3;
             for($i = 0; $i < $db; $i++){
                 $row = $allatok -> fetch_row();
 
@@ -88,7 +88,7 @@
 
             $html = '';
 
-            $totalItemPerLine = 4;
+            $totalItemPerLine = 3;
             for($i = 0; $i < $db; $i++){
                 $row = $allatok -> fetch_row();
 

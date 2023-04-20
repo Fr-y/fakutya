@@ -1,4 +1,4 @@
-from random import randint, choice
+from random import randint, choice, choices
 import cv2
 import base64
 from lorem import *
@@ -13,7 +13,7 @@ with open('kutyafajtak.txt', 'r', encoding="utf-8") as f:
 chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 fajok = ["kutya","macska","hörcsög","egér","papagáj"]
 kutyak = []
-for i in range(1, 300):
+for i in range(1, 200):
     nev = allatnevek[randint(0, len(allatnevek)-1)].rstrip()
     added_at = f"{randint(2020, 2023)}-{randint(1, 12)}-{randint(1, 28)} {randint(0, 24)}:{randint(0, 60)}:{randint(0, 60)}"
     is_quarantined = randint(0, 1)
@@ -35,7 +35,7 @@ for i in range(1, 300):
     
     telefon = f"+36{choice([30, 40, 50, 60])}{randint(0,9999999)}"
 
-    kutya = f"{i};{nev};{added_at};{is_quarantined};0;{is_ivartalan};{is_chipped};{ivar};{kor};{suly};{fog_allapot};{faj};{tipus};{img};{allapot};{tulajdonsagok};{email};{telefon};0;{randint(7,8)}"
+    kutya = f"{i};{nev};{added_at};{is_quarantined};0;{is_ivartalan};{is_chipped};{ivar};{kor};{suly};{fog_allapot};{faj};{tipus};{img};{allapot};{tulajdonsagok};{email};{telefon};0;{choices([1,2,3,4,7,8], weights=(60,60,60,60,20,20), k=1)[0]}"
     kutyak.append(kutya)
 
 with open('kutyak.csv', 'w', encoding="utf-8") as f:
