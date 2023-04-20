@@ -77,7 +77,7 @@
                 }
             </script>
             <li>
-                <label for="tipus">Faj típus: </label>
+                <label for="tipus">Faj típus: <span class="star">*</span></label>
                 <input required list="tipusok" name="tipus" type="text">
                 <datalist id="tipusok">
                     <?php

@@ -99,6 +99,7 @@ body {
 .header {
   background-color: #bdcdc9;
   grid-area: header;
+  overflow: hidden;
 }
 .header nav {
   font-size: 2vw;
