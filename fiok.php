@@ -42,7 +42,7 @@
 
             $html = '';
 
-            $totalItemPerLine = 3;
+            $totalItemPerLine = 4;
             for($i = 0; $i < $db; $i++){
                 $row = $allatok -> fetch_row();
 
@@ -68,6 +68,8 @@
                 .'További részletek <span class="nyil-ikon"> </span></a>'
                 .'<a class="btn" href="/visszakuldes.php?id='.$allat_id.'">'
                 .'Állat visszaküldése<span class="nyil-ikon"> </span></a>'
+                .'<a class="btn" href="/allat_frissitese.php?id='.$allat_id.'">'
+                .'Állat frissítése <span class="nyil-ikon"> </span></a>'
                 .'</div>';
             
                 if($i % $totalItemPerLine == ($totalItemPerLine-1) || $i == ($db-1))
@@ -78,6 +80,7 @@
             echo $html;
             ?>
             </div>
+            <hr>
             <h2>Te általad feltöltött állatok:</h2>
             <div class="wrapper">
             <?php
@@ -88,7 +91,7 @@
 
             $html = '';
 
-            $totalItemPerLine = 3;
+            $totalItemPerLine = 4;
             for($i = 0; $i < $db; $i++){
                 $row = $allatok -> fetch_row();
 

@@ -25,9 +25,10 @@
     <?php
     session_start();
     if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-        echo ' <h1 style="text-align:center;"> Állat örökbeadásához <a href="user_system/login.php">jelentkezz be! </a></h1>';
+        echo ' <h1 style="text-align:center;"> Állat változtatásához <a href="user_system/login.php">jelentkezz be! </a></h1>';
         exit;
-    }?>
+    }
+    ?>
     <div class="container">
         <?php
         require_once("config.php");
@@ -48,6 +49,11 @@
         $fog_allapot = $mezo[10];
         $allapot = $mezo[14];
         $tulajdonsagok = $mezo[15];
+        $USER_ID = $mezo[19];
+        if ($_SESSION["id"] != $USER_ID) {
+            echo '<h1 style="text-align:center;">Csak a saját állatod adatait frissítheted</a></h1>';
+            exit;
+        }
         ?>
         <form id="feltoltes" method="post" class="form-container" action="" enctype="multipart/form-data">
             <h1>Állat örökbeadása</h1>
@@ -75,11 +81,11 @@
             </li>
             <li>
                 <label for="tulajdonsagok">Állat tulajdonságai: <i style="color: #111111CC;">Szín, szokások, barátságos-e, stb</i></label>
-                <textarea form="feltoltes" name="tulajdonsagok" id="tulajdonsagok" cols="30" rows="10" maxlength="2000" placeholder="Fekete szőrű keverék macska, utcán találtuk. Mindenkivel kedves, nem karmol, nem harap..." value="<?php echo $tulajdonsagok;?>"></textarea>
+                <textarea form="feltoltes" name="tulajdonsagok" id="tulajdonsagok" cols="30" rows="10" maxlength="2000" placeholder="Fekete szőrű keverék macska, utcán találtuk. Mindenkivel kedves, nem karmol, nem harap..."><?php echo $tulajdonsagok;?></textarea>
             </li>
             <li>
                 <label for="allapot">Állat állapota: <i style="color: #111111CC;">fogazat részlegezése, egészségügyi infók, stb.</i></label>
-                <textarea form="feltoltes" name="allapot" id="allapot" cols="30" rows="5" maxlength="2000" placeholder="Két foga szuvas az egyik a bal felső kisőrlő, a másik pedig a jobb alsó kisőrlő foga. Egy éve bal hátsó lába törött.." value="<?php echo $allapot;?>"></textarea>
+                <textarea form="feltoltes" name="allapot" id="allapot" cols="30" rows="5" maxlength="2000" placeholder="Két foga szuvas az egyik a bal felső kisőrlő, a másik pedig a jobb alsó kisőrlő foga. Egy éve bal hátsó lába törött.."><?php echo $allapot;?></textarea>
             </li>
             </ul>
             

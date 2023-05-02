@@ -1,21 +1,18 @@
 <?php
-// Include config file
 require_once "../config.php";
  
-// Define variables and initialize with empty values
 $username = $password = $email =  $confirm_password = "";
 $username_err = $email_err = $password_err = $confirm_password_err = "";
  
-// Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
-    // Validate username
+
     if(empty(trim($_POST["username"]))){
         $username_err = "Adj meg egy nevet.";
     } elseif(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))){
         $username_err = "A név csak betűket, számokat és aláhúzást tartalmazhat.";
     } else{
-        // Prepare a select statement
+    
         $sql = "SELECT user_id FROM orokbefogado WHERE username = ?";
         
         if($stmt = mysqli_prepare($link, $sql)){
@@ -39,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
 
-    // Validate email
+
     if(empty(trim($_POST["email"]))){
         $email_err = "Adj meg egy email címet.";
     } else{
@@ -66,7 +63,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
 
-    // Validate password
+
     if(empty(trim($_POST["password"]))){
         $password_err = "Adj meg egy jelszót.";     
     } elseif(strlen(trim($_POST["password"])) < 5){
@@ -75,7 +72,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $password = trim($_POST["password"]);
     }
     
-    // Validate confirm password
+
     if(empty(trim($_POST["confirm_password"]))){
         $confirm_password_err = "Erősítsed meg a jelszavadat.";     
     } else{
@@ -100,7 +97,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             $param_username = $username;
             $param_email = $email;
-            $param_password = crypt($password, PASSWORD_DEFAULT); // Creates a password hash
+        
 
             
             if(mysqli_stmt_execute($stmt)){

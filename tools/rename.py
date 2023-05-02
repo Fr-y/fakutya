@@ -1,8 +1,8 @@
 import os
 os.getcwd()
-collection = "E:/code/fakutya/kutyakepek"
+collection = "E:/code/fakutya2/fakutya/allatkepek"
 for i, filename in enumerate(os.listdir(collection)):
     os.rename(
-        f"E:/code/fakutya/kutyakepek/{filename}",
-        f"E:/code/fakutya/kutyakepek/{i}.jpg",
+        f"{collection}/{filename}",
+        f"{collection}/{i}.jpg",
     )

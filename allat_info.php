@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
-    <link rel="stylesheet" href="css/universal.css">
-    <link rel="stylesheet" href="css/allat_info.css">
+    <link rel="stylesheet" href="/css/universal.css">
+    <link rel="stylesheet" href="/css/allat_info.css">
     <link rel="icon" type="image/x-icon" href="/img/logo.ico">
 
 </head>
@@ -16,19 +16,19 @@
     <div class="site-container">
         <div class="header">
             <nav>
-                <img src="img/logo.png" alt="FAKUTYA">
+                <img src="/img/logo.png" alt="FAKUTYA">
 
-                <a class="nav-btn" href="index.php">Főoldal</a>
-                <a class="nav-btn active" href="allatok.php">Állataink</a>
-                <a class="nav-btn" href="index.php#elerhetoseg">Elérhetőségek</a>
-                <a class="nav-btn" href="allat_elhelyezes.php">Örökbeadás</a>
+                <a class="nav-btn" href="/index.php">Főoldal</a>
+                <a class="nav-btn active" href="/allatok.php">Állataink</a>
+                <a class="nav-btn" href="/index.php#elerhetoseg">Elérhetőségek</a>
+                <a class="nav-btn" href="/allat_elhelyezes.php">Örökbeadás</a>
                 <?php
                     session_start();
                     if(!isset($_SESSION["loggedin"])){
-                        echo '<a class="nav-btn" href="user_system/login.php"> Bejelentkezés</a>';
+                        echo '<a class="nav-btn" href="/user_system/login.php"> Bejelentkezés</a>';
                     }
                      else {
-                        echo '<a class="nav-btn" href="fiok.php">'. $_SESSION["username"].'</a>';
+                        echo '<a class="nav-btn" href="/fiok.php">'. $_SESSION["username"].'</a>';
                     }
                     ?>
             </nav>
@@ -42,9 +42,14 @@
 
                     $db_amount = $link->query("SELECT MAX(allat_id) FROM allat");
                     $totalItem = $db_amount->fetch_row()[0];
-                    $url_allat_id = $_GET['id'];
+                    if (isset($_GET['id'])) {
+                        $url_allat_id = $_GET['id'];
+                    } else {
+                        $url_allat_id = "no";
+                    }
+                    
 
-                    if ($url_allat_id <= $totalItem) {
+                    if (is_numeric($url_allat_id) &&  $url_allat_id <= $totalItem) {
                         $allat = $link->query("SELECT * FROM `allat` WHERE `allat_id` = \"$url_allat_id\"");
                         $fog_lekerdezes = $link->query("SELECT fog_dict.JELENTES from fog_dict INNER JOIN allat on allat.FOG_ALLAPOT = fog_dict.FOG_ALLAPOT WHERE allat.ALLAT_ID = \"$url_allat_id\";");
                         if(isset($_SESSION["loggedin"])){
@@ -60,8 +65,6 @@
 
                         $allat_id = $mezo[0];
                         $nev = $mezo[1];
-                        $added_at = substr($mezo[2], 0, 10);
-                        $IS_QUARANTINED = $mezo[3];
                         $IS_BEFOGADHATO = $mezo[4];
                         $IS_IVARTALAN = $mezo[5];
                         $ivaros = '';
@@ -70,7 +73,6 @@
                         }else{
                             $ivaros = "nincs ivartalanítva";
                         }
-                        $IS_CHIPPED = $mezo[6];
                         $ivar = $mezo[7];
                         $kor = $mezo[8];
                         $suly = $mezo[9];
@@ -82,13 +84,18 @@
                         $email = $mezo[16];
                         $telefon = $mezo[17];
                         $BEFOGADOTT = $mezo[18];
+                        $USER_ID = $mezo[19];
 
                         if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             $orokbefogadashtml = '<button disabled class="btn" style="background-color:red;">Örökbefogadáshoz jelentkezz be!</button>';
                         } else {
-                            if ($IS_QUARANTINED == 0 && $IS_CHIPPED == 1 && $BEFOGADOTT == 0) {
+                            if ($IS_BEFOGADHATO == 1 && $BEFOGADOTT == 0) {
                                 if (($suly > 5 && $kert == 1) || ($suly <= 5)) {
-                                    $orokbefogadashtml = '<a href="orokbefogadas.php?id='.$allat_id.'" class="btn" >Örökbefogadás</a>';
+                                    if ($USER_ID != $_SESSION["id"]) {
+                                        $orokbefogadashtml = '<a href="orokbefogadas.php?id='.$allat_id.'" class="btn" >Örökbefogadás</a>';
+                                    } else {
+                                        $orokbefogadashtml = '<button title="Saját állatodat nem fogadhatod örökbe" disabled class="btn" style="background-color:red;">Ezt az állatot nem fogadhatod be!</button>';
+                                    }
                                 } else {
                                     $orokbefogadashtml = '<button title="Ez az állat túl nagy hogy kert nélkül lakhasson!" disabled class="btn" style="background-color:red;">Ezt az állatot nem fogadhatod be!</button>';
                                 }
@@ -148,6 +155,6 @@
     </div>
 
 </body>
-<title><?php echo $nev ?> ≫ Kutyafa Nonprofit Civil Összefogás</title>
+<title><?php if(isset($nev)){ echo $nev;} else{echo "❌";} ?> ≫ Kutyafa Nonprofit Civil Összefogás</title>
 
 </html>

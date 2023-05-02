@@ -140,7 +140,7 @@ Drever
 Drótszőrű griffon
 Dunker
 Entlebuchi havasi kutya
-Erdélyi kopó  Magyarország
+Erdélyi kopó 
 Estrelai hegyikutya
 Eszkimó kutya
 Amerikai eszkimó kutya
@@ -247,14 +247,14 @@ Kis berni kopó
 Kis jurai kopó
 Kis luzerni kopó
 Kis schwyzi kopó
-Komondor  Magyarország
+Komondor
 Kooikerhondje
 Koreai jindo kutya
 Közép-ázsiai juhászkutya
 Kras-medencei juhászkutya
 Kromfohrlandi
 Kunming kutya
-Kuvasz  Magyarország
+Kuvasz
 Kyi leo
 Labrador retriever
 Lagotto romagnolo

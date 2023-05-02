@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
-    <link rel="stylesheet" href="css/universal.css">
-    <link rel="stylesheet" href="css/homepage.css">
+    <link rel="stylesheet" href="/css/universal.css">
+    <link rel="stylesheet" href="/css/homepage.css">
     <link rel="icon" type="image/x-icon" href="/img/logo.ico">
 
     <title>Fakutya ≫ Kutyafa Nonprofit Civil Összefogás</title>
@@ -17,18 +17,18 @@
     <div class="site-container">
         <div class="header">
             <nav>
-                <img src="img/logo.png" alt="FAKUTYA">
+                <img src="/img/logo.png" alt="FAKUTYA">
 
-                <a class="nav-btn active" href="index.php">Főoldal</a>
-                <a class="nav-btn" href="allatok.php">Állataink</a>
+                <a class="nav-btn active" href="/index.php">Főoldal</a>
+                <a class="nav-btn" href="/allatok.php">Állataink</a>
                 <a class="nav-btn" href="#elerhetoseg">Elérhetőségek</a>
-                <a class="nav-btn" href="allat_elhelyezes.php">Örökbeadás</a>
+                <a class="nav-btn" href="/allat_elhelyezes.php">Örökbeadás</a>
                     <?php
                     session_start();
                     if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-                        echo '<a class="nav-btn" href="user_system/login.php"> Bejelentkezés</a>';
+                        echo '<a class="nav-btn" href="/user_system/login.php"> Bejelentkezés</a>';
                     } else {
-                        echo '<a class="nav-btn" href="fiok.php">'. $_SESSION["username"].'</a>';
+                        echo '<a class="nav-btn" href="/fiok.php">'. $_SESSION["username"].'</a>';
                     }
                     ?>
                 
@@ -41,7 +41,7 @@
         <script type="text/javascript" src="https://cookieconsent.popupsmart.com/src/js/popper.js"></script><script> window.start.init({Palette:"palette2",Mode:"banner bottom",Theme:"classic",Message:"Ez a weboldal cookie-kat használ annak érdekében, hogy a legjobb élményt nyújthassa webhelyünk.",ButtonText:"Értem",LinkText:"",Time:"1",})</script>
             <div class="about-content">
                 <div class="img-container">
-                    <img class="mainpage-img" src="kutyakepek/225.jpg">
+                    <img class="mainpage-img" src="/img/aboutimg.jpg">
 
                 </div>
                 <div class="text">
@@ -79,13 +79,13 @@
                 </div>
 
                 <div class="img-container">
-                    <img class="mainpage-img" src="kutyakepek/187.jpg">
+                    <img class="mainpage-img" src="/img/donateimg.jpg">
 
                 </div>
             </div>
             <div class="tamogatas-content">
                 <div class="img-container">
-                    <img class="mainpage-img" src="kutyakepek/255.jpg">
+                    <img class="mainpage-img" src="/img/tamogatasimg.jpg">
 
                 </div>
                 <div class="text">
