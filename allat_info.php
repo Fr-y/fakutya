@@ -92,7 +92,11 @@
                             if ($IS_BEFOGADHATO == 1 && $BEFOGADOTT == 0) {
                                 if (($suly > 5 && $kert == 1) || ($suly <= 5)) {
                                     if ($USER_ID != $_SESSION["id"]) {
-                                        $orokbefogadashtml = '<a href="orokbefogadas.php?id='.$allat_id.'" class="btn" >Örökbefogadás</a>';
+                                        if (!$_SESSION["is_admin"]) {
+                                            $orokbefogadashtml = '<a href="orokbefogadas.php?id='.$allat_id.'" class="btn" >Örökbefogadás</a>';
+                                        } else {
+                                            $orokbefogadashtml = '<button title="Adminként nem fogadhatsz örökbe" disabled class="btn" style="background-color:red;">Ezt az állatot nem fogadhatod be!</button>';
+                                        }
                                     } else {
                                         $orokbefogadashtml = '<button title="Saját állatodat nem fogadhatod örökbe" disabled class="btn" style="background-color:red;">Ezt az állatot nem fogadhatod be!</button>';
                                     }

@@ -1,90 +1,107 @@
 .main {
-  padding-top: 10pt;
-  overflow-y: scroll;
-  background-color: #f2f7f6;
-  text-align: justify;
-  line-height: 2.5rem;
+    padding-top: 10pt;
+    overflow-y: scroll;
+    background-color: #f2f7f6;
+    text-align: justify;
+    line-height: 2.5rem;
 }
+
 .main .about-content {
-  padding: 20pt;
-  background-color: #f9f9f9;
-  display: flex;
+    padding: 20pt;
+    background-color: #f9f9f9;
+    display: flex;
 }
+
 .main .about-content .text {
-  padding: 10pt;
-  font-size: xx-large;
-  float: right;
-  width: 60%;
+    padding: 10pt;
+    font-size: xx-large;
+    float: right;
+    width: 60%;
 }
+
 .main .about-content .img-container {
-  width: 40%;
-  text-align: center;
+    width: 40%;
+    text-align: center;
 }
+
 .main .about-content .img-container .mainpage-img {
-  height: 600pt;
-  border-radius: 50pt 63pt 287pt 83pt;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: calc(85vh - 300pt);
+    border-radius: 50pt 63pt 287pt 83pt;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .main .donate-content {
-  padding: 20pt;
-  background-color: #f3f9d3;
-  display: flex;
+    padding: 20pt;
+    background-color: #f3f9d3;
+    display: flex;
 }
+
 .main .donate-content .text {
-  padding-right: 80pt;
-  color: #000;
-  font-size: xx-large;
-  float: right;
-  width: 45%;
+    padding-right: 80pt;
+    color: #000;
+    font-size: xx-large;
+    float: right;
+    width: 45%;
 }
+
 .main .donate-content .text .btn-container {
-  padding-top: 20pt;
-  text-align: center;
+    padding-top: 20pt;
+    text-align: center;
 }
+
 .main .donate-content .img-container {
-  width: 55%;
-  text-align: center;
+    width: 55%;
+    text-align: center;
 }
+
 .main .donate-content .img-container .mainpage-img {
-  width: 35%;
-  border-radius: 50% 25% 50% 25%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 35%;
+    border-radius: 50% 25% 50% 25%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .main .tamogatas-content {
-  padding: 20pt;
-  background-color: #93f8de;
-  display: flex;
+    padding: 20pt;
+    background-color: #93f8de;
+    display: flex;
 }
+
 .main .tamogatas-content .text {
-  padding-right: 80pt;
-  color: #f2f7f6;
-  font-size: calc(24px + 4 * (100vw - 640px) / 780);
-  float: right;
-  width: 45%;
+    padding-right: 80pt;
+    color: #f2f7f6;
+    font-size: calc(24px + 4 * (100vw - 640px) / 780);
+    float: right;
+    width: 45%;
 }
+
 .main .tamogatas-content .img-container {
-  width: 55%;
-  text-align: center;
+    width: 55%;
+    text-align: center;
 }
+
 .main .tamogatas-content .img-container .mainpage-img {
-  width: 90%;
-  border-radius: 50% 25% 50% 25%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 90%;
+    border-radius: 50% 25% 50% 25%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .main .elerhetoseg-content {
-  padding: 20pt;
-  background-color: #c0ec5a;
-  display: flex;
+    padding: 20pt;
+    background-color: #c0ec5a;
+    display: flex;
 }
+
 .main .elerhetoseg-content .text {
-  padding-left: 80pt;
-  color: #000;
-  font-size: xx-large;
-  float: left;
-  width: 60%;
+    padding-left: 80pt;
+    color: #000;
+    font-size: xx-large;
+    float: left;
+    width: 60%;
 }
+
 .main .elerhetoseg-content .map-container {
-  width: 100%;
+    width: 100%;
 }
+
 
 /*# sourceMappingURL=homepage.css.map */

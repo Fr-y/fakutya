@@ -128,6 +128,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </style>
 </head>
 <body>
+    <a href="javascript:history.back()">
+        <img style="position:absolute; top:10pt; left:10pt;" width="50" height="50" src="../img/return.svg" alt="Vissza" title="Vissza">
+    </a>
     <div class="container">
         <form class="form-container" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <h1>Regisztráció</h1>

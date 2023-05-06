@@ -34,10 +34,6 @@
         require_once("config.php");
         $url_allat_id = $_GET['id'];
         $allat = $link->query("SELECT * FROM `allat` WHERE `allat_id` = \"$url_allat_id\"");
-        if(isset($_SESSION["loggedin"])){
-            $kert_lekerdezes = $link->query('SELECT kert FROM orokbefogado WHERE user_id = '.$_SESSION["id"]);
-            $kert = $kert_lekerdezes->fetch_row()[0];
-        }
         $mezo = $allat -> fetch_row();
         $nev = $mezo[1];
         $IS_QUARANTINED = $mezo[3];
@@ -50,7 +46,14 @@
         $allapot = $mezo[14];
         $tulajdonsagok = $mezo[15];
         $USER_ID = $mezo[19];
-        if ($_SESSION["id"] != $USER_ID) {
+        $befogadott = $link->query("SELECT befogado_id FROM befogadott_allatok WHERE ALLAT_ID = $url_allat_id");
+        $befogado_arr = $befogadott -> fetch_row();
+        if (isset($befogado_arr)) {
+            $befogado = $befogado_arr[0];
+        } else{
+            $befogado = 0;
+        }
+        if ($_SESSION["id"] != $USER_ID && $_SESSION["id"] != $befogado && !$_SESSION["is_admin"]) {
             echo '<h1 style="text-align:center;">Csak a saját állatod adatait frissítheted</a></h1>';
             exit;
         }

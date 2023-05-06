@@ -10,6 +10,24 @@
 
     <link rel="icon" type="image/x-icon" href="/img/logo.ico">
 
+    <script> 
+        window.onload = function() {
+        document.cookie = "windowHeight=" + window.innerHeight + ";";
+        document.cookie = "windowWidth=" + window.innerWidth + ";";
+        }
+
+        window.onresize = function(){
+        location.reload();
+        }
+    </script>
+
+    <?php
+    if(!isset($_COOKIE['windowHeight']) && !isset($_COOKIE['windowWidth'])) {
+        header("Refresh:0");
+        exit();
+    }
+    ?>
+
     <title> <?php session_start(); echo $_SESSION["username"]?> ≫ Kutyafa Nonprofit Civil Összefogás</title>
 </head>
 <body>
@@ -21,7 +39,6 @@
                 <a class="nav-btn" href="index.php">Főoldal</a>
                 <a class="nav-btn" href="allatok.php" >Állataink</a>
                 <a class="nav-btn " href="./index.php#elerhetoseg">Elérhetőségek</a>
-                <!-- nem oldal hanem dropdown -->
                 <a class="nav-btn" href="allat_elhelyezes.php">Örökbeadás</a>
                 <a class="nav-btn active" href="user_system/logout.php">Kijelentkezés</a>
 
@@ -39,10 +56,22 @@
             $db = $link->query('SELECT count(*) FROM allat INNER JOIN befogadott_allatok ON befogadott_allatok.allat_id = allat.allat_id WHERE befogadott_allatok.BEFOGADO_ID = '.$_SESSION["id"]);
             $db = $db -> fetch_row()[0];
 
+            $height= $_COOKIE['windowHeight'];
+            $width= $_COOKIE['windowWidth'];
 
             $html = '';
+            if ($width > 640) {
+                $num = $width / 640;
+                $threshold = 0.76;
+                if ($num - floor($num) >= $threshold) {
+                    $totalItemPerLine = ceil($num); 
+                } else {
+                    $totalItemPerLine = floor($num);
+                }
+            } else{
+                $totalItemPerLine = 1;
+            }     
 
-            $totalItemPerLine = 4;
             for($i = 0; $i < $db; $i++){
                 $row = $allatok -> fetch_row();
 
@@ -89,9 +118,21 @@
             $db = $link->query('SELECT count(*) FROM allat WHERE  user_id = '.$_SESSION["id"]);
             $db = $db -> fetch_row()[0];
 
-            $html = '';
+            $height= $_COOKIE['windowHeight'];
+            $width= $_COOKIE['windowWidth'];
 
-            $totalItemPerLine = 4;
+            $html = '';
+            if ($width > 640) {
+                $num = $width / 640;
+                $threshold = 0.76;
+                if ($num - floor($num) >= $threshold) {
+                    $totalItemPerLine = ceil($num); 
+                } else {
+                    $totalItemPerLine = floor($num);
+                }
+            } else{
+                $totalItemPerLine = 1;
+            }     
             for($i = 0; $i < $db; $i++){
                 $row = $allatok -> fetch_row();
 

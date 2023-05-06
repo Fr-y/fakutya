@@ -42,12 +42,12 @@
             <div class="about-content">
                 <div class="img-container">
                     <img class="mainpage-img" src="/img/aboutimg.jpg">
-
                 </div>
                 <div class="text">
                     <p class="text-block">
                         <span class="title">Üdvözöljük a Fakutya Menhelyen!</span> 
-                        <br><br>
+                        <br>
+                        <br>
                             Cégünk egy állatmentő és -védelmi szervezet, amely elsősorban kutyákat fogad be, gondoz, és keres nekik örökbefogadókat. Tevékenységi körünk az állatvédelem területére korlátozódik, és elkötelezettek vagyunk az állatokkal való foglalkozásban.
                         <br>
                         <br>

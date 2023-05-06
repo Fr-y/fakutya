@@ -1,179 +1,201 @@
 @import url("https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300;500;600;700&display=swap");
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Zilla Slab";
-  transition: all 0.4s ease;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Zilla Slab";
+    transition: all 0.4s ease;
 }
 
+
+/* debuggoláshoz, ha nem kell kommenteld ki */
+
+
+/* * {
+    border: red 1px dashed;
+} */
+
+
+/* --------------- */
+
 ::-webkit-scrollbar {
-  width: 20px;
+    width: 20px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 40px;
-  height: 50pt;
+    background: #888;
+    border-radius: 40px;
+    height: 50pt;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+    background: #555;
 }
 
 html,
 body {
-  margin: 0;
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
+    margin: 0;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
 }
 
 .site-container {
-  display: grid;
-  grid-template-areas: "header header header header header header" "main main main main main main" "footer footer footer footer footer footer";
-  grid-template-rows: 10% 85% 5%;
-  gap: 0;
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
+    display: grid;
+    grid-template-areas: "header header header header header header" "main main main main main main" "footer footer footer footer footer footer";
+    grid-template-rows: 10% 85% 5%;
+    gap: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
 }
 
 .ikon {
-  vertical-align: text-bottom;
-  margin: 1pt;
-  width: 20pt;
-  height: 20pt;
+    vertical-align: text-bottom;
+    margin: 1pt;
+    width: 20pt;
+    height: 20pt;
 }
 
 .text-block {
-  font-size: 1.5rem;
-  line-height: 2rem;
-  text-align: center;
-  font-family: "Segoe UI", sans-serif;
-  color: #333;
-  background-color: inherit;
-  padding: 1rem;
-  border-radius: 0.5rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    text-align: center;
+    font-family: "Segoe UI", sans-serif;
+    color: #333;
+    background-color: inherit;
+    padding: 1rem;
+    border-radius: 0.5rem;
 }
 
 .title {
-  text-align: center;
-  font-weight: bold;
-  font-size: 3rem;
-  color: #4c4c4c;
-  text-shadow: 2px 2px #fff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 3rem;
+    color: #4c4c4c;
+    text-shadow: 2px 2px #fff;
 }
 
 .btn {
-  flex-direction: row;
-  margin: 2pt;
-  margin-top: 6pt;
-  border-radius: 10pt;
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.07);
-  background: #f2f7f6;
-  padding: 23px 20px;
-  font-weight: 500;
-  transition: all 0.4s ease;
-  display: inline-block;
-  font-size: calc(16px + 4 * (100vw - 640px) / 780);
-  color: #000;
-  letter-spacing: 0.01vw;
-  text-decoration: none;
+    flex-direction: row;
+    margin: 2pt;
+    margin-top: 6pt;
+    border-radius: 10pt;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.07);
+    background: #f2f7f6;
+    padding: 23px 20px;
+    font-weight: 500;
+    transition: all 0.4s ease;
+    display: inline-block;
+    font-size: calc(16px + 4 * (100vw - 640px) / 780);
+    color: #000;
+    letter-spacing: 0.01vw;
+    text-decoration: none;
 }
+
 .btn:hover {
-  background: #e4d2d6;
-  color: #fff;
+    background: #e4d2d6;
+    color: #fff;
 }
+
 .btn[disabled] {
-  color: #f2f7f6;
-  cursor: not-allowed;
+    color: #f2f7f6;
+    cursor: not-allowed;
 }
+
 .btn[disabled]:hover {
-  color: #f2f7f6;
+    color: #f2f7f6;
 }
 
 .header {
-  background-color: #bdcdc9;
-  grid-area: header;
-  overflow: hidden;
+    background-color: #bdcdc9;
+    grid-area: header;
+    overflow: hidden;
 }
+
 .header nav {
-  font-size: 2vw;
-  text-align: right;
+    font-size: 2vw;
+    text-align: right;
 }
+
 .header nav .nav-btn {
-  flex-direction: row;
-  margin: 2pt;
-  margin-top: 6pt;
-  border-radius: 10pt;
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.07);
-  background: #f2f7f6;
-  font-weight: 500;
-  transition: all 0.4s ease;
-  display: inline-block;
-  font-size: 20pt;
-  color: #000;
-  letter-spacing: 0.01vw;
-  text-decoration: none;
-  padding: 1.5vw;
-  line-height: 8vh;
+    flex-direction: row;
+    margin: 2pt;
+    margin-top: 6pt;
+    border-radius: 10pt;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.07);
+    background: #f2f7f6;
+    font-weight: 500;
+    transition: all 0.4s ease;
+    display: inline-block;
+    font-size: 20pt;
+    color: #000;
+    letter-spacing: 0.01vw;
+    text-decoration: none;
+    padding: 1.5vw;
+    line-height: 8vh;
 }
+
 .header nav .nav-btn:not(.active):hover {
-  background: #e4d2d6;
-  color: #fff;
+    background: #e4d2d6;
+    color: #fff;
 }
+
 .header nav .nav-btn.active {
-  background-color: #c7a2aa;
-  color: #f2f7f6;
+    background-color: #c7a2aa;
+    color: #f2f7f6;
 }
+
 .header nav img {
-  width: 18vw;
-  float: left;
+    width: 18vw;
+    float: left;
 }
 
 .main {
-  background-color: #bdcdc9;
-  grid-area: main;
+    background-color: #bdcdc9;
+    grid-area: main;
 }
 
 .footer {
-  grid-area: footer;
-  background-color: #f2f7f6;
-  text-align: center;
-  padding-top: 1rem;
+    grid-area: footer;
+    background-color: #f2f7f6;
+    text-align: center;
+    padding-top: 1rem;
 }
 
 .center {
-  text-align: center;
+    text-align: center;
 }
 
 li {
-  list-style-type: none;
-  margin-top: 30pt;
+    list-style-type: none;
+    margin-top: 30pt;
 }
 
 .star {
-  color: red;
+    color: red;
 }
 
 textarea {
-  resize: none;
-  width: 100%;
-  border: #f098ab 1px solid;
-  border-radius: 8pt;
-  padding: 5pt;
+    resize: none;
+    width: 100%;
+    border: #f098ab 1px solid;
+    border-radius: 8pt;
+    padding: 5pt;
 }
+
 textarea:focus-visible {
-  border: #f098ab 5px solid;
-  outline: none;
+    border: #f098ab 5px solid;
+    outline: none;
 }
 
 p:first-letter {
-  text-transform: uppercase;
+    text-transform: uppercase;
 }
+
 
 /*# sourceMappingURL=universal.css.map */

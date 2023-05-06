@@ -162,8 +162,6 @@
                         $img = "img/placeholder.png";
                     }
                     
-               
-
                     $feltoltes->execute([$_POST["nev"],$ivartalan,$chipped,$_POST["ivar"],$_POST["kor"],$_POST["suly"],$_POST["fog_allapot"],$faj,$_POST["tipus"],$img,$_POST["allapot"],$_POST["tulajdonsagok"],$_POST["email"],$_POST["num"],$_SESSION["id"]]);
                     echo '<script>window.location.href = "/index.php";</script>';
                 }

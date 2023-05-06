@@ -44,7 +44,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;                            
+                            $_SESSION["username"] = $username;     
+                            if ($username == "admin") {
+                                $_SESSION["is_admin"] = true;
+                            } else{
+                                $_SESSION["is_admin"] = false;
+                            }                    
                             
                             header("location: ../index.php");
                         } else{
@@ -81,11 +86,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </a>
     <div class="container" >
 
-        <?php 
-        if(!empty($login_err)){
-            echo '<div class="alert alert-danger">' . $login_err . '</div>';
-        }        
-        ?>
         <form class="form-container" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <h1>Bejelentkezés</h1>
         <ul>
@@ -99,6 +99,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </li>
+            <?php 
+            if(!empty($login_err)){
+                echo '<div class="alert alert-danger">' . $login_err . '</div>';
+            }        
+            ?>
             <li>
                 <input type="submit" class="btn btn-primary" value="Login">
             </li>
