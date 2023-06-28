@@ -125,7 +125,7 @@
 
                 </div>
                 <div class="map-container">
-                    <iframe height="800pt" width="100%" frameborder="0" style="border:0" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDu_H_Pu0y-Zrb9tOoi5_pHkAxut73vIOw&q=C36M+79 Budapest&maptype=satellite&zoom=20&center=47.41074879372286, 19.083417848554443"
+                    <iframe height="800pt" width="100%" frameborder="0" style="border:0" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=apikey&q=C36M+79 Budapest&maptype=satellite&zoom=20&center=47.41074879372286, 19.083417848554443"
                         allowfullscreen>
                         </iframe>
                 </div>
